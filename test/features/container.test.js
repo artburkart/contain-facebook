@@ -2,25 +2,25 @@ describe("Container", () => {
   let webExtension, background;
 
   describe("Add-on initializes", () => {
-    describe("No Container with name Facebook exists", () => {
+    describe("No Container with name Hulu exists", () => {
       beforeEach(async () => {
         webExtension = await loadWebExtension();
         background = webExtension.background;
       });
 
-      it("should create a new Facebook Container", () => {
+      it("should create a new Hulu Container", () => {
         expect(background.browser.contextualIdentities.create).to.have.been.calledWithMatch({
-          name: "Facebook"
+          name: "Hulu"
         });
       });
     });
 
-    describe("Container with name Facebook already exists", () => {
+    describe("Container with name Hulu already exists", () => {
       beforeEach(async () => {
         webExtension = await loadWebExtension({
           async beforeParse(window) {
             await window.browser.contextualIdentities._create({
-              name: "Facebook"
+              name: "Hulu"
             });
           }
         });
